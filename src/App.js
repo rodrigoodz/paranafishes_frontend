@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { ChakraProvider, Box } from "@chakra-ui/react";
+import FishList from "./components/FishList";
+import AddFish from "./components/AddFish";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider>
+      <Box
+        bg="#34495e"
+        height="100vh"
+        display="flex"
+        width="100wh"
+        overflow="hidden"
+      >
+        <AddFish />
+        <FishList />
+      </Box>
+    </ChakraProvider>
   );
-}
+};
 
 export default App;
