@@ -1,21 +1,21 @@
 import React from "react";
-import { ChakraProvider, Box } from "@chakra-ui/react";
+import { ChakraProvider, Flex } from "@chakra-ui/react";
 import FishList from "./components/FishList";
 import AddFish from "./components/AddFish";
 
 const App = () => {
   return (
     <ChakraProvider>
-      <Box
+      <Flex
         bg="#34495e"
-        height="100vh"
+        min-height="100vh"
         display="flex"
         width="100wh"
-        overflow="hidden"
+        direction={["column", "column", "column", "row"]}
       >
         <AddFish />
         <FishList />
-      </Box>
+      </Flex>
     </ChakraProvider>
   );
 };
