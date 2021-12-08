@@ -21,6 +21,7 @@ const AddFish = () => {
     commonName: ["", "", ""],
     description: "",
     distinctiveChar: "",
+    order: "",
   });
 
   const handleScientificNameInput = (e) => {
@@ -46,7 +47,12 @@ const AddFish = () => {
   };
 
   const handleSelect = (e) => {
-    setFishData({ ...fishData, family: e.target.value });
+    // extraigo texto de la <option> y de ahi guardo tambien el fishData.order
+    const optionText = e.target.options[e.target.selectedIndex].text;
+
+    const order = optionText.substring(0, optionText.indexOf(":"));
+
+    setFishData({ ...fishData, family: e.target.value, order: order });
   };
 
   const handleImageName = (e) => {
@@ -98,6 +104,7 @@ const AddFish = () => {
         commonName: ["", "", ""],
         description: "",
         distinctiveChar: "",
+        order: "",
       });
     }
   };
@@ -145,60 +152,60 @@ const AddFish = () => {
           color="gray.500"
         >
           <option value="Potamotrygonidae">
-            MYLIOBATIFORMES: Potamotrygonidae
+            Myliobatiformes: Potamotrygonidae
           </option>
-          <option value="Clupeidae">CLUPEIFORMES: Clupeidae</option>
-          <option value="Engraulidae">CLUPEIFORMES: Engraulidae</option>
+          <option value="Clupeidae">Clupeiformes: Clupeidae</option>
+          <option value="Engraulidae">Clupeiformes: Engraulidae</option>
           <option value="Pristigasteridae">
-            CLUPEIFORMES: Pristigasteridae
+            Clupeiformes: Pristigasteridae
           </option>
-          <option value="Parodontidae">CHARACIFORMES: Parodontidae</option>
-          <option value="Curimatidae">CHARACIFORMES: Curimatidae</option>
+          <option value="Parodontidae">Characiformes: Parodontidae</option>
+          <option value="Curimatidae">Characiformes: Curimatidae</option>
           <option value="Prochilodontidae">
-            CHARACIFORMES: Prochilodontidae
+            Characiformes: Prochilodontidae
           </option>
-          <option value="Anostomidae">CHARACIFORMES: Anostomidae</option>
-          <option value="Crenuchidae">CHARACIFORMES: Crenuchidae</option>
-          <option value="Hemiodontidae">CHARACIFORMES: Hemiodontidae</option>
-          <option value="Serrasalmidae">CHARACIFORMES: Serrasalmidae</option>
+          <option value="Anostomidae">Characiformes: Anostomidae</option>
+          <option value="Crenuchidae">Characiformes: Crenuchidae</option>
+          <option value="Hemiodontidae">Characiformes: Hemiodontidae</option>
+          <option value="Serrasalmidae">Characiformes: Serrasalmidae</option>
           <option value="Gasteropelecidae">
-            CHARACIFORMES: Gasteropelecidae
+            Characiformes: Gasteropelecidae
           </option>
-          <option value="Characidae">CHARACIFORMES: Characidae</option>
+          <option value="Characidae">Characiformes: Characidae</option>
           <option value="Acestrorhynchidae">
-            CHARACIFORMES: Acestrorhynchidae
+            Characiformes: Acestrorhynchidae
           </option>
-          <option value="Cynodontidae">CHARACIFORMES: Cynodontidae</option>
-          <option value="Erythrinidae">CHARACIFORMES: Erythrinidae</option>
-          <option value="Lebiasinidae">CHARACIFORMES: Lebiasinidae</option>
-          <option value="Aspredinidae">SILURIFORMES: Aspredinidae</option>
+          <option value="Cynodontidae">Characiformes: Cynodontidae</option>
+          <option value="Erythrinidae">Characiformes: Erythrinidae</option>
+          <option value="Lebiasinidae">Characiformes: Lebiasinidae</option>
+          <option value="Aspredinidae">Siluriformes: Aspredinidae</option>
           <option value="Trichomycteridae">
-            SILURIFORMES: Trichomycteridae
+            Siluriformes: Trichomycteridae
           </option>
-          <option value="Callichthyidae">SILURIFORMES: Callichthyidae</option>
-          <option value="Loricariidae">SILURIFORMES: Loricariidae</option>
+          <option value="Callichthyidae">Siluriformes: Callichthyidae</option>
+          <option value="Loricariidae">Siluriformes: Loricariidae</option>
           <option value="Pseudopimelodidae">
-            SILURIFORMES: Pseudopimelodidae
+            Siluriformes: Pseudopimelodidae
           </option>
-          <option value="Heptapteridae">SILURIFORMES: Heptapteridae</option>
-          <option value="Pimelodidae">SILURIFORMES: Pimelodidae</option>
-          <option value="Doradidae">SILURIFORMES: Doradidae</option>
-          <option value="Auchenipteridae">SILURIFORMES: Auchenipteridae</option>
-          <option value="Gymnotidae">GYMNOTIFORMES: Gymnotidae</option>
-          <option value="Sternopygidae">GYMNOTIFORMES: Sternopygidae</option>
+          <option value="Heptapteridae">Siluriformes: Heptapteridae</option>
+          <option value="Pimelodidae">Siluriformes: Pimelodidae</option>
+          <option value="Doradidae">Siluriformes: Doradidae</option>
+          <option value="Auchenipteridae">Siluriformes: Auchenipteridae</option>
+          <option value="Gymnotidae">Gymnotiformes: Gymnotidae</option>
+          <option value="Sternopygidae">Gymnotiformes: Sternopygidae</option>
           <option value="Rhamphichthyidae">
-            GYMNOTIFORMES: Rhamphichthyidae
+            Gymnotiformes: Rhamphichthyidae
           </option>
-          <option value="Hypopomidae">GYMNOTIFORMES: Hypopomidae</option>
-          <option value="Apteronotidae">GYMNOTIFORMES: Apteronotidae</option>
-          <option value="Atherinopsidae">ATHERINIFORMES: Atherinopsidae</option>
-          <option value="Rivulidae">CYPRINODONTIFORMES: Rivulidae</option>
-          <option value="Poecilidae">CYPRINODONTIFORMES: Poecilidae</option>
-          <option value="Belonidae">BELONIFORMES: Belonidae</option>
-          <option value="Synbranchidae">SYNBRANCHIFORMES: Synbranchidae</option>
-          <option value="Sciaenidae">PERCIFORMES: Sciaenidae</option>
-          <option value="Cichlidae">PERCIFORMES: Cichlidae</option>
-          <option value="Achiridae">PLEURONECTIFORMES: Achiridae</option>
+          <option value="Hypopomidae">Gymnotiformes: Hypopomidae</option>
+          <option value="Apteronotidae">Gymnotiformes: Apteronotidae</option>
+          <option value="Atherinopsidae">Atheriniformes: Atherinopsidae</option>
+          <option value="Rivulidae">Cyprinodontiformes: Rivulidae</option>
+          <option value="Poecilidae">Cyprinodontiformes: Poecilidae</option>
+          <option value="Belonidae">Beloniformes: Belonidae</option>
+          <option value="Synbranchidae">Synbranchiformes: Synbranchidae</option>
+          <option value="Sciaenidae">Perciformes: Sciaenidae</option>
+          <option value="Cichlidae">Perciformes: Cichlidae</option>
+          <option value="Achiridae">Pleuronectiformes: Achiridae</option>
         </Select>
         <Textarea
           placeholder="Ingresar descripcion del pez"

@@ -30,15 +30,23 @@ const FishDescription = ({ fishData }) => {
         {fishData.scientificName && (
           <Stack direction="row">
             <Text fontWeight="bold" fontSize={["xs", "sm", "md", "xl"]}>
-              Nombre Cientifico:{" "}
+              Nombre Cientifico:
             </Text>
             <Text fontSize={["xs", "sm", "md", "xl"]}>
               {fishData.scientificName}
             </Text>
           </Stack>
         )}
+        {fishData.order && (
+          <Stack direction="row">
+            <Text fontWeight="bold" fontSize={["xs", "sm", "md", "lg"]}>
+              Orden:
+            </Text>
+            <Text fontSize={["xs", "sm", "md", "lg"]}>{fishData.order}</Text>
+          </Stack>
+        )}
         <Stack direction="row">
-          <Text fontWeight="bold" fontSize={["xs", "sm", "md", "lg"]}>
+          <Text fontWeight="bold" fontSize={["xs", "sm", "md", "2md"]}>
             Nombres comunes:
           </Text>
 
@@ -52,7 +60,7 @@ const FishDescription = ({ fishData }) => {
               justifyContent="center"
               alignItems="center"
             >
-              <Text fontSize={["xs", "sm", "md", "lg"]}>
+              <Text fontSize={["xs", "sm", "md", "2md"]}>
                 {fishData.commonName.join(",")}
               </Text>
             </Box>
@@ -61,28 +69,28 @@ const FishDescription = ({ fishData }) => {
 
         {fishData.family && (
           <Stack direction="row">
-            <Text fontWeight="bold" fontSize={["xs", "sm", "md", "lg"]}>
+            <Text fontWeight="bold" fontSize={["xs", "sm", "md", "2md"]}>
               Familia:
             </Text>
-            <Text fontSize={["xs", "sm", "md", "lg"]}>{fishData.family}</Text>
+            <Text fontSize={["xs", "sm", "md", "2md"]}>{fishData.family}</Text>
           </Stack>
         )}
         {fishData.description && (
           <Stack direction="row">
-            <Text fontWeight="bold" fontSize={["xs", "sm", "md", "lg"]}>
+            <Text fontWeight="bold" fontSize={["xs", "sm", "md", "2md"]}>
               Descripción:
             </Text>
-            <Text fontStyle="italic" fontSize={["xs", "sm", "md", "lg"]}>
+            <Text fontStyle="italic" fontSize={["xs", "sm", "md", "2md"]}>
               {fishData.description}
             </Text>
           </Stack>
         )}
         {fishData.distinctiveChar && (
           <Stack direction="row">
-            <Text fontWeight="bold" fontSize={["xs", "sm", "md", "lg"]}>
+            <Text fontWeight="bold" fontSize={["xs", "sm", "md", "2md"]}>
               Caracteristica distintiva:
             </Text>
-            <Text fontStyle="italic" fontSize={["xs", "sm", "md", "lg"]}>
+            <Text fontStyle="italic" fontSize={["xs", "sm", "md", "2md"]}>
               {fishData.distinctiveChar}
             </Text>
           </Stack>
