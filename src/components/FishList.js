@@ -32,7 +32,7 @@ const FishList = () => {
   }, []);
 
   return (
-    <Box bg="#34495e" px="5" width="full" overflowY="scroll">
+    <Box px="5" width="full" overflowY="scroll">
       {Boolean(fishes) &&
         fishes.map((fish) => (
           <FishDescription fishData={fish} key={fish.scientificName} />
