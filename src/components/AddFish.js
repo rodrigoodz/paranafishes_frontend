@@ -16,12 +16,13 @@ import { db } from "../firebase-config";
 const AddFish = () => {
   const [fishData, setFishData] = useState({
     family: "",
-    imageName: "",
     scientificName: "",
     commonName: ["", "", ""],
     description: "",
-    distinctiveChar: "",
+    biology: "",
     order: "",
+    distribution: "",
+    observations: "",
   });
 
   const handleScientificNameInput = (e) => {
@@ -55,27 +56,44 @@ const AddFish = () => {
     setFishData({ ...fishData, family: e.target.value, order: order });
   };
 
-  const handleImageName = (e) => {
-    const value = e.target.value;
-    setFishData({ ...fishData, imageName: value });
-  };
-
   const handleDescription = (e) => {
     const value = e.target.value;
     setFishData({ ...fishData, description: value });
   };
 
-  const handleDistinctiveCharacteristic = (e) => {
+  const handleBiology = (e) => {
     const value = e.target.value;
-    setFishData({ ...fishData, distinctiveChar: value });
+    setFishData({ ...fishData, biology: value });
+  };
+
+  const handleDistribution = (e) => {
+    const value = e.target.value;
+    setFishData({ ...fishData, distribution: value });
+  };
+
+  const handleObservations = (e) => {
+    const value = e.target.value;
+    setFishData({ ...fishData, observations: value });
   };
 
   const handleClick = async () => {
-    const { scientificName, family, description } = fishData;
+    const {
+      scientificName,
+      family,
+      description,
+      biology,
+      order,
+      distribution,
+      observations,
+    } = fishData;
     if (
       scientificName.length === 0 ||
       family.length === 0 ||
-      description.length === 0
+      description.length === 0 ||
+      observations.length === 0 ||
+      biology.length === 0 ||
+      order.length === 0 ||
+      distribution.length === 0
     ) {
       swal({
         title: "Error!",
@@ -99,12 +117,13 @@ const AddFish = () => {
       // });
       setFishData({
         family: "",
-        imageName: "",
         scientificName: "",
         commonName: ["", "", ""],
         description: "",
-        distinctiveChar: "",
+        biology: "",
         order: "",
+        distribution: "",
+        observations: "",
       });
     }
   };
@@ -122,26 +141,7 @@ const AddFish = () => {
         name="scientificName"
         onChange={handleScientificNameInput}
       />
-      <Stack direction="row">
-        <FishInput
-          ph="Nombre vulgar 1"
-          value={fishData.commonName[0]}
-          name="commonName0"
-          onChange={handleCommonNameInput}
-        />
-        <FishInput
-          ph="Nombre vulgar 2"
-          value={fishData.commonName[1]}
-          name="commonName1"
-          onChange={handleCommonNameInput}
-        />
-        <FishInput
-          ph="Nombre vulgar 3"
-          value={fishData.commonName[3]}
-          name="commonName2"
-          onChange={handleCommonNameInput}
-        />
-      </Stack>
+
       <Select
         placeholder="Seleccionar Familia"
         onChange={handleSelect}
@@ -203,30 +203,63 @@ const AddFish = () => {
         <option value="Achiridae">Pleuronectiformes: Achiridae</option>
       </Select>
       <Textarea
-        placeholder="Ingresar descripcion del pez"
+        placeholder="Descripcion (características generales)"
         max-height="60px"
         onChange={handleDescription}
         value={fishData.description}
-        minHeight="200px"
-        maxHeight="250px"
+        minHeight="100px"
+        maxHeight="150px"
+        mb="2"
+      />
+      <Textarea
+        placeholder="Biologia"
+        onChange={handleBiology}
+        value={fishData.biology}
+        minHeight="100px"
+        maxHeight="150px"
+        mb="2"
+      />
+      <Textarea
+        placeholder="Distribucion"
+        onChange={handleDistribution}
+        value={fishData.distribution}
+        minHeight="100px"
+        maxHeight="150px"
+        mb="2"
+      />
+      <Textarea
+        placeholder="Observaciones"
+        onChange={handleObservations}
+        value={fishData.observations}
+        minHeight="100px"
+        maxHeight="150px"
+        mb="2"
       />
       <Divider orientation="horizontal" my="2" color="red" />
       <Text pb="2" fontSize={("xs", "xs", "xs", "md")} textColor="gray.500">
         Opcional
       </Text>
-      <FishInput
-        ph="Nombre de la imagen"
-        value={fishData.imageName}
-        name="imageName"
-        onChange={handleImageName}
-      />
-      <Textarea
-        placeholder="Caracteristica distintiva"
-        onChange={handleDistinctiveCharacteristic}
-        value={fishData.distinctiveChar}
-        minHeight="100px"
-        maxHeight="150px"
-      />
+
+      <Stack direction="row">
+        <FishInput
+          ph="Nombre vulgar 1"
+          value={fishData.commonName[0]}
+          name="commonName0"
+          onChange={handleCommonNameInput}
+        />
+        <FishInput
+          ph="Nombre vulgar 2"
+          value={fishData.commonName[1]}
+          name="commonName1"
+          onChange={handleCommonNameInput}
+        />
+        <FishInput
+          ph="Nombre vulgar 3"
+          value={fishData.commonName[3]}
+          name="commonName2"
+          onChange={handleCommonNameInput}
+        />
+      </Stack>
       <Button colorScheme="blue" my="5" onClick={handleClick}>
         Cargar
       </Button>

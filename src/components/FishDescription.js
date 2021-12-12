@@ -21,7 +21,9 @@ const FishDescription = ({ fishData }) => {
       <Center>
         {fishData.imageName && (
           <Image
-            src={`https://firebasestorage.googleapis.com/v0/b/paranafishes.appspot.com/o/${fishData.imageName}.png?alt=media`}
+            src={`https://firebasestorage.googleapis.com/v0/b/paranafishes.appspot.com/o/${encodeURIComponent(
+              fishData.imageName
+            )}.jpg?alt=media`}
             alt="Dan Abramov"
           />
         )}
@@ -85,13 +87,33 @@ const FishDescription = ({ fishData }) => {
             </Text>
           </Stack>
         )}
-        {fishData.distinctiveChar && (
+        {fishData.distribution && (
           <Stack direction="row">
             <Text fontWeight="bold" fontSize={["xs", "sm", "md", "2md"]}>
-              Caracteristica distintiva:
+              Distribucion:
             </Text>
             <Text fontStyle="italic" fontSize={["xs", "sm", "md", "2md"]}>
-              {fishData.distinctiveChar}
+              {fishData.distribution}
+            </Text>
+          </Stack>
+        )}
+        {fishData.biology && (
+          <Stack direction="row">
+            <Text fontWeight="bold" fontSize={["xs", "sm", "md", "2md"]}>
+              Biologia:
+            </Text>
+            <Text fontStyle="italic" fontSize={["xs", "sm", "md", "2md"]}>
+              {fishData.biology}
+            </Text>
+          </Stack>
+        )}
+        {fishData.observations && (
+          <Stack direction="row">
+            <Text fontWeight="bold" fontSize={["xs", "sm", "md", "2md"]}>
+              Observaciones:
+            </Text>
+            <Text fontStyle="italic" fontSize={["xs", "sm", "md", "2md"]}>
+              {fishData.observations}
             </Text>
           </Stack>
         )}
