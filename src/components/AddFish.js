@@ -27,7 +27,7 @@ const AddFish = () => {
 
   const handleScientificNameInput = (e) => {
     const value = e.target.value;
-    setFishData({ ...fishData, scientificName: value });
+    setFishData({ ...fishData, scientificName: value, imageName: value });
   };
 
   const handleCommonNameInput = (e) => {
@@ -108,13 +108,13 @@ const AddFish = () => {
     } else {
       await setDoc(doc(db, "fishes", fishData.scientificName), fishData);
 
-      // swal({
-      //   title: "Confirmado!",
-      //   text: `Datos añadidos con exito`,
-      //   icon: "success",
-      //   buttons: false,
-      //   timer: 2000,
-      // });
+      swal({
+        title: "Confirmado!",
+        text: `Datos añadidos con exito`,
+        icon: "success",
+        buttons: false,
+        timer: 2000,
+      });
       setFishData({
         family: "",
         scientificName: "",
@@ -127,8 +127,6 @@ const AddFish = () => {
       });
     }
   };
-
-  console.log(fishData);
 
   return (
     <Box px="3" pt="5" textAlign="center">
@@ -158,6 +156,7 @@ const AddFish = () => {
         <option value="Pristigasteridae">Clupeiformes: Pristigasteridae</option>
         <option value="Parodontidae">Characiformes: Parodontidae</option>
         <option value="Curimatidae">Characiformes: Curimatidae</option>
+        <option value="Bryconidae">Characiformes: Bryconidae</option>
         <option value="Prochilodontidae">
           Characiformes: Prochilodontidae
         </option>
@@ -196,10 +195,11 @@ const AddFish = () => {
         <option value="Atherinopsidae">Atheriniformes: Atherinopsidae</option>
         <option value="Rivulidae">Cyprinodontiformes: Rivulidae</option>
         <option value="Poecilidae">Cyprinodontiformes: Poecilidae</option>
+        <option value="Cyprinidae">Cypriniformes: Cyprinidae</option>
         <option value="Belonidae">Beloniformes: Belonidae</option>
         <option value="Synbranchidae">Synbranchiformes: Synbranchidae</option>
         <option value="Sciaenidae">Perciformes: Sciaenidae</option>
-        <option value="Cichlidae">Perciformes: Cichlidae</option>
+        <option value="Cichlidae">Cichliformes: Cichlidae</option>
         <option value="Achiridae">Pleuronectiformes: Achiridae</option>
       </Select>
       <Textarea
@@ -212,17 +212,17 @@ const AddFish = () => {
         mb="2"
       />
       <Textarea
-        placeholder="Biologia"
-        onChange={handleBiology}
-        value={fishData.biology}
+        placeholder="Distribucion"
+        onChange={handleDistribution}
+        value={fishData.distribution}
         minHeight="100px"
         maxHeight="150px"
         mb="2"
       />
       <Textarea
-        placeholder="Distribucion"
-        onChange={handleDistribution}
-        value={fishData.distribution}
+        placeholder="Biologia"
+        onChange={handleBiology}
+        value={fishData.biology}
         minHeight="100px"
         maxHeight="150px"
         mb="2"
@@ -255,7 +255,7 @@ const AddFish = () => {
         />
         <FishInput
           ph="Nombre vulgar 3"
-          value={fishData.commonName[3]}
+          value={fishData.commonName[2]}
           name="commonName2"
           onChange={handleCommonNameInput}
         />

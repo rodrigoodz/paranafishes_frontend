@@ -1,5 +1,5 @@
 import { Image } from "@chakra-ui/image";
-import { Text, Box, Center, Stack } from "@chakra-ui/layout";
+import { Text, Box, Center, Stack, Grid } from "@chakra-ui/layout";
 import React from "react";
 
 const FishDescription = ({ fishData }) => {
@@ -10,17 +10,18 @@ const FishDescription = ({ fishData }) => {
   // };
 
   return (
-    <Box
-      display="flex"
+    <Grid
       bg="#2c3e50"
       p="4"
       borderRadius="2xl"
       my="4"
       textColor="white"
+      templateColumns={["100%", "100%", "100%", "30% 70%"]}
     >
-      <Center>
+      <Center bg="white" borderRadius="2xl" p="2">
         {fishData.imageName && (
           <Image
+            borderRadius="sm"
             src={`https://firebasestorage.googleapis.com/v0/b/paranafishes.appspot.com/o/${encodeURIComponent(
               fishData.imageName
             )}.jpg?alt=media`}
@@ -78,47 +79,63 @@ const FishDescription = ({ fishData }) => {
           </Stack>
         )}
         {fishData.description && (
-          <Stack direction="row">
+          <Stack direction="column" spacing="0">
             <Text fontWeight="bold" fontSize={["xs", "sm", "md", "2md"]}>
               Descripción:
             </Text>
-            <Text fontStyle="italic" fontSize={["xs", "sm", "md", "2md"]}>
+            <Text
+              fontStyle="italic"
+              fontSize={["xs", "sm", "md", "2md"]}
+              textAlign="justify"
+            >
               {fishData.description}
             </Text>
           </Stack>
         )}
         {fishData.distribution && (
-          <Stack direction="row">
+          <Stack direction="column" spacing="0">
             <Text fontWeight="bold" fontSize={["xs", "sm", "md", "2md"]}>
               Distribucion:
             </Text>
-            <Text fontStyle="italic" fontSize={["xs", "sm", "md", "2md"]}>
+            <Text
+              fontStyle="italic"
+              fontSize={["xs", "sm", "md", "2md"]}
+              textAlign="justify"
+            >
               {fishData.distribution}
             </Text>
           </Stack>
         )}
         {fishData.biology && (
-          <Stack direction="row">
+          <Stack direction="column" spacing="0">
             <Text fontWeight="bold" fontSize={["xs", "sm", "md", "2md"]}>
               Biologia:
             </Text>
-            <Text fontStyle="italic" fontSize={["xs", "sm", "md", "2md"]}>
+            <Text
+              fontStyle="italic"
+              fontSize={["xs", "sm", "md", "2md"]}
+              textAlign="justify"
+            >
               {fishData.biology}
             </Text>
           </Stack>
         )}
         {fishData.observations && (
-          <Stack direction="row">
+          <Stack direction="column" spacing="0">
             <Text fontWeight="bold" fontSize={["xs", "sm", "md", "2md"]}>
               Observaciones:
             </Text>
-            <Text fontStyle="italic" fontSize={["xs", "sm", "md", "2md"]}>
+            <Text
+              fontStyle="italic"
+              fontSize={["xs", "sm", "md", "2md"]}
+              textAlign="justify"
+            >
               {fishData.observations}
             </Text>
           </Stack>
         )}
       </Box>
-    </Box>
+    </Grid>
   );
 };
 
